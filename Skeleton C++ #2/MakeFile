@@ -2,13 +2,15 @@ CC := g++ # This is the main compiler
 # CC := clang --analyze # and comment out the linker last line for sanity
 SRCDIR := src
 BUILDDIR := build
-TARGET := bin/runner
+TARGET := bin/<EXECUTABLENAME HERE>
  
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+#Add extra compiler options, like -std=c++11, on the line beneath this one.
 CFLAGS := -g # -Wall
-LIB := -pthread -lmongoclient -L lib -lboost_thread-mt -lboost_filesystem-mt -lboost_system-mt
+#Add parameters for extra libraries in the line beneath this.
+LIB := -pthread -L lib 
 INC := -I include
 
 $(TARGET): $(OBJECTS)
